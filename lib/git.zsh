@@ -27,6 +27,13 @@ function git_prompt_info() {
 #    _tmp=$(command git symbolic-ref -q HEAD 2> /dev/null) || return 0
 #    ref=$(command git for-each-ref --format='%(upstream:short)' ${_tmp} 2> /dev/null) || return 0
 #    echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
+#    branch=$(command git symbolic-ref -q HEAD 2> /dev/null) || return 0
+#    ref=$(command git for-each-ref --format='%(upstream:short)' ${branch} 2> /dev/null) || return 0
+#    info=$(command echo "${ref#refs/heads/}")
+#    if [[ "${info}" == "" ]]; then
+#      info=$(command echo "<no-remote>/$(git rev-parse --abbrev-ref HEAD)" 2> /dev/null) || return 0
+#    fi
+#    echo "$ZSH_THEME_GIT_PROMPT_PREFIX${info}$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
   fi
 }
 
