@@ -1,5 +1,6 @@
 # AVIT ZSH Theme
 
+<<<<<<< HEAD
 # settings
 typeset +H _current_dir="%{$fg_bold[blue]%}%3~%{$reset_color%} "
 typeset +H _return_status="%{$fg_bold[red]%}%(?..⍉)%{$reset_color%}"
@@ -8,6 +9,15 @@ typeset +H _hist_no="%{$fg[grey]%}%h%{$reset_color%}"
 PROMPT='
 $(_user_host)${_current_dir} $(git_prompt_info) $(ruby_prompt_info)
 %{%(!.%F{red}.%F{white})%}▶%{$reset_color%} '
+=======
+PROMPT='
+$(_user_host)${_current_dir} $(git_prompt_info)
+%{$fg[$CARETCOLOR]%}▶%{$resetcolor%} '
+
+PROMPT2='%{$fg[$CARETCOLOR]%}◀%{$reset_color%} '
+
+RPROMPT='$(_vi_status)%{$(echotc UP 1)%}$(_git_time_since_commit) $(git_prompt_status) $(jenv_prompt_info) ${_return_status}%{$(echotc DO 1)%}'
+>>>>>>> 3c781081... fix jenv prompt info
 
 PROMPT2='%{%(!.%F{red}.%F{white})%}◀%{$reset_color%} '
 
