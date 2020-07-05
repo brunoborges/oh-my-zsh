@@ -1,6 +1,5 @@
 # AVIT ZSH Theme
 
-<<<<<<< HEAD
 # settings
 typeset +H _current_dir="%{$fg_bold[blue]%}%3~%{$reset_color%} "
 typeset +H _return_status="%{$fg_bold[red]%}%(?..⍉)%{$reset_color%}"
