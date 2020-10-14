@@ -7,7 +7,7 @@ typeset +H _hist_no="%{$fg[grey]%}%h%{$reset_color%}"
 
 PROMPT='
 $(_user_host)${_current_dir} $(git_prompt_info)
-%{$fg[$CARETCOLOR]%}▶%{$resetcolor%} '
+%{%(!.${fg[red]}.${fg[white]})%}▶%{$reset_color%} '
 
 PROMPT2='%{%(!.${fg[red]}.${fg[white]})%}◀%{$reset_color%} '
 
