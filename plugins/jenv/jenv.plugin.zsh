@@ -8,6 +8,11 @@ for jenvdir in $jenvdirs; do
     fi
 done
 
+USE_JENV=1
+if [[ $USE_JENV -eq 0 ]]; then
+    FOUND_JENV=0
+fi
+
 if [[ $FOUND_JENV -eq 0 ]]; then
     if (( $+commands[brew] )) && jenvdir="$(brew --prefix jenv)"; then
         [[ -d "${jenvdir}/bin" ]] && FOUND_JENV=1
