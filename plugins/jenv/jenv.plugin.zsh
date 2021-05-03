@@ -8,27 +8,17 @@ for jenvdir in $jenvdirs; do
     fi
 done
 
-USE_JENV=1
-if [[ $USE_JENV -eq 0 ]]; then
-    FOUND_JENV=0
-fi
-
 if [[ $FOUND_JENV -eq 0 ]]; then
     if (( $+commands[brew] )) && jenvdir="$(brew --prefix jenv)"; then
         [[ -d "${jenvdir}/bin" ]] && FOUND_JENV=1
     fi
 fi
 
-USE_JENV=1
-if [[ $USE_JENV -eq 0 ]]; then
-    FOUND_JENV=0
-fi
-
 if [[ $FOUND_JENV -eq 1 ]]; then
     (( $+commands[jenv] )) || export PATH="${jenvdir}/bin:$PATH"
     eval "$(jenv init - zsh)"
 
-    function _get_jenv_info() { 
+    function _get_jenv_info() {
         echo "$(jenv version-name 2>/dev/null)"
     }
 
@@ -36,8 +26,12 @@ if [[ $FOUND_JENV -eq 1 ]]; then
         export JENV_ROOT=$jenvdir
     fi
 else
-    function _get_jenv_info() { 
-        echo "$(java -version 2>&1)"
+    function _get_jenv_info() {
+        if [[ -f "${JAVA_HOME}/release" ]]; then
+          echo "$(export `grep -e 'JAVA_VERSION=' $JAVA_HOME/release` && echo $JAVA_VERSION | tr -d '"' | tr -d "'" && unset JAVA_VERSION)"
+        else
+          echo "$(java -version 2>&1)"
+        fi
     }
 fi
 
